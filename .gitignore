@@ -3,15 +3,16 @@ data/llm_cache*
 data/repos
 data/pr_chunks
 data/results
+data/results_03_2025
 data/classification_results
-data/ground_truth
-/tmp
+data/classification_results_03_2025
+data/target_prs
+data/figures/*.pdf
 .github_token
 logs_*.json
 results_*.json
 .openai_token
 .db_token
-.openai_token_ExeCode
 .worker_id
 candidate_projects*.csv
 .target_project
@@ -19,4 +20,3 @@ candidate_projects*.csv
 coverage.json
 coverage_report
 .openrouter_token
-data/figures/*.pdf

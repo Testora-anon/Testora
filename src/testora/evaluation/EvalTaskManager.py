@@ -6,18 +6,22 @@ from pathlib import Path
 from testora.evaluation.ResultsManager import current_results, add_result
 from testora.evaluation.TargetPRs import project_to_target_prs
 
-config = {
-    "user": "user_name",
-    "host": "sql141.your-server.de",
-    "database": "regression_finder_db"
-}
-with open(".db_token", "r") as f:
-    config["password"] = f.read().strip()
-
-with open(".worker_id", "r") as f:
-    my_worker_id = f.read().strip()
-
 classification_pr_nb = -23
+
+
+def initialize():
+    global config, my_worker_id
+
+    config = {
+        "user": "user_name",
+        "host": "sql141.your-server.de",
+        "database": "regression_finder_db"
+    }
+    with open(".db_token", "r") as f:
+        config["password"] = f.read().strip()
+
+    with open(".worker_id", "r") as f:
+        my_worker_id = f.read().strip()
 
 
 def connect_and_do(func):
@@ -253,6 +257,9 @@ if __name__ == "__main__":
                         help="Apply to classification tasks")
 
     args = parser.parse_args()
+
+    initialize()
+
     table_name = "classification_tasks" if args.classification else "tasks"
     if args.status:
         show_status()
